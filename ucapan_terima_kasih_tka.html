@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terima Kasih TKA Gelombang 2 - SMK Islamic Centre Cirebon</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0A2540',
+                            blue: '#0052CC',
+                            sky: '#0088CC',
+                            gold: '#FFB800',
+                            yellow: '#FFD700',
+                            darkGold: '#D4A000',
+                            lightBg: '#F4F7FA'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom 3D Button Styles */
+        .btn-3d-gold {
+            background: linear-gradient(180deg, #FFD700 0%, #FFB800 100%);
+            border-bottom: 5px solid #C68A00;
+            box-shadow: 0 6px 20px rgba(255, 184, 0, 0.4);
+            transition: all 0.1s ease;
+        }
+        .btn-3d-gold:active {
+            transform: translateY(4px);
+            border-bottom-width: 1px;
+            box-shadow: 0 2px 8px rgba(255, 184, 0, 0.4);
+        }
+
+        .btn-3d-blue {
+            background: linear-gradient(180deg, #0066FF 0%, #0044B3 100%);
+            border-bottom: 5px solid #002D7A;
+            box-shadow: 0 6px 20px rgba(0, 82, 204, 0.4);
+            transition: all 0.1s ease;
+        }
+        .btn-3d-blue:active {
+            transform: translateY(4px);
+            border-bottom-width: 1px;
+            box-shadow: 0 2px 8px rgba(0, 82, 204, 0.4);
+        }
+
+        .btn-3d-white {
+            background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 100%);
+            border-bottom: 5px solid #CBD5E1;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: all 0.1s ease;
+        }
+        .btn-3d-white:active {
+            transform: translateY(4px);
+            border-bottom-width: 1px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Glassmorphism Card Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        /* Canvas Stylings */
+        #interactiveCanvas {
+            touch-action: none;
+            cursor: crosshair;
+        }
+
+        /* Ambient Glow Effect */
+        .gold-glow {
+            box-shadow: 0 0 30px rgba(255, 184, 0, 0.35);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans antialiased selection:bg-brand-gold selection:text-brand-navy min-h-screen relative overflow-x-hidden">
+
+    <!-- Ambient Background Interactive Canvas Particles -->
+    <canvas id="bgParticleCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 py-6 sm:py-10 space-y-8">
+
+        <!-- HEADER BANNER SEKOLAH -->
+        <header class="bg-gradient-to-r from-brand-navy via-brand-blue to-brand-sky rounded-3xl p-6 sm:p-8 text-white shadow-2xl relative overflow-hidden border-2 border-brand-gold/30">
+            <!-- Decorative Banner Swirls -->
+            <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-brand-gold/20 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+                <!-- Logo & School Info -->
+                <div class="flex items-center gap-4 text-center md:text-left">
+                    <div class="w-24 h-24 sm:w-28 sm:h-28 bg-white/95 backdrop-blur-md rounded-2xl p-1.5 shadow-xl flex items-center justify-center shrink-0 border-2 border-brand-gold">
+                        <!-- Presisi SVG Logo Yayasan Islamic Centre Cirebon (Bintang Segi 8) -->
+                        <svg class="w-full h-full drop-shadow-md" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Outermost Navy Blue 8-Point Star -->
+                            <path d="M100 0 L123.5 29.3 L161.8 11.8 L161.8 50.1 L200 61.8 L182.5 100 L200 138.2 L161.8 149.9 L161.8 188.2 L123.5 170.7 L100 200 L76.5 170.7 L38.2 188.2 L38.2 149.9 L0 138.2 L17.5 100 L0 61.8 L38.2 50.1 L38.2 11.8 L76.5 29.3 Z" fill="#0A225C"/>
+                            
+                            <!-- Middle Royal Blue Star Border -->
+                            <path d="M100 8 L121 34.2 L155.3 18.6 L155.3 52.8 L189.5 63.2 L173.9 97.4 L189.5 131.6 L155.3 142.1 L155.3 176.3 L121 160.7 L100 186.9 L79 160.7 L44.7 176.3 L44.7 142.1 L10.5 131.6 L26.1 97.4 L10.5 63.2 L44.7 52.8 L44.7 18.6 L79 34.2 Z" fill="#0066FF"/>
+                            
+                            <!-- Inner Light Cyan Star Fill -->
+                            <path d="M100 16 L118.6 39.2 L148.9 25.3 L148.9 55.6 L179.1 64.9 L165.2 95.1 L179.1 125.4 L148.9 134.7 L148.9 165 L118.6 151.1 L100 174.3 L81.4 151.1 L51.1 165 L51.1 134.7 L20.9 125.4 L34.8 95.1 L20.9 64.9 L51.1 55.6 L51.1 25.3 L81.4 39.2 Z" fill="#5CD0FF"/>
+                            
+                            <!-- Inner Light Blue Center Polygon Background -->
+                            <path d="M100 24 L116.1 44.1 L142.4 32.1 L142.4 58.4 L168.6 66.5 L156.5 92.7 L168.6 119 L142.4 127.1 L142.4 153.3 L116.1 141.3 L100 161.4 L83.9 141.3 L57.6 153.3 L57.6 127.1 L31.4 119 L43.5 92.7 L31.4 66.5 L57.6 58.4 L57.6 32.1 L83.9 44.1 Z" fill="#99E3FF"/>
+
+                            <!-- Curved Path for Text "YAYASAN ISLAMIC CENTRE" -->
+                            <path id="textArcPath" d="M 45 88 A 58 58 0 0 1 155 88" fill="none" stroke="none"/>
+                            <text font-family="Arial, sans-serif" font-weight="900" font-size="11.5" fill="#0A225C">
+                                <textPath href="#textArcPath" startOffset="50%" text-anchor="middle">
+                                    YAYASAN ISLAMIC CENTRE
+                                </textPath>
+                            </text>
+
+                            <!-- White Glowing Sun / Orb Top Center -->
+                            <circle cx="100" cy="62" r="8" fill="#FFFFFF" filter="drop-shadow(0px 0px 3px rgba(255,255,255,0.9))"/>
+
+                            <!-- Green Open Book / Al-Qur'an Base -->
+                            <g transform="translate(0, 10)">
+                                <path d="M100 90 L135 72 C135 72 138 98 130 110 L100 118 Z" fill="#00A843"/>
+                                <path d="M100 90 L65 72 C65 72 62 98 70 110 L100 118 Z" fill="#00CD52"/>
+                                <!-- Book Spines / Pages (Green Layering) -->
+                                <path d="M100 86 L133 70 C131 77 128 103 128 103 L100 112 Z" fill="#22E066" stroke="#0A225C" stroke-width="1.2"/>
+                                <path d="M100 86 L67 70 C69 77 72 103 72 103 L100 112 Z" fill="#22E066" stroke="#0A225C" stroke-width="1.2"/>
+                                
+                                <!-- Page Lines Left -->
+                                <line x1="72" y1="78" x2="96" y2="89" stroke="#0A225C" stroke-width="1.2"/>
+                                <line x1="73" y1="84" x2="96" y2="95" stroke="#0A225C" stroke-width="1.2"/>
+                                <line x1="74" y1="90" x2="96" y2="101" stroke="#0A225C" stroke-width="1.2"/>
+                                <line x1="75" y1="96" x2="96" y2="106" stroke="#0A225C" stroke-width="1.2"/>
+
+                                <!-- Page Lines Right -->
+                                <line x1="128" y1="78" x2="104" y2="89" stroke="#0A225C" stroke-width="1.2"/>
+                                <line x1="127" y1="84" x2="104" y2="95" stroke="#0A225C" stroke-width="1.2"/>
+                                <line x1="126" y1="90" x2="104" y2="101" stroke="#0A225C" stroke-width="1.2"/>
+                                <line x1="125" y1="96" x2="104" y2="106" stroke="#0A225C" stroke-width="1.2"/>
+
+                                <!-- Vertical Pen / Quill Center -->
+                                <path d="M98 60 L102 60 L102 115 L98 115 Z" fill="#D1D5DB" stroke="#0A225C" stroke-width="1"/>
+                                <path d="M97 115 L103 115 L100 128 Z" fill="#FF8C00" stroke="#0A225C" stroke-width="1"/>
+                            </g>
+
+                            <!-- Side 5-Point Yellow Stars -->
+                            <!-- Left Star -->
+                            <polygon points="53,103 55,108 60,108 56,111 58,116 53,113 48,116 50,111 46,108 51,108" fill="#FFC700" stroke="#D4A000" stroke-width="0.5"/>
+                            <!-- Right Star -->
+                            <polygon points="147,103 149,108 154,108 150,111 152,116 147,113 142,116 144,111 140,108 145,108" fill="#FFC700" stroke="#D4A000" stroke-width="0.5"/>
+
+                            <!-- Yellow Golden Ribbon Banner at Bottom -->
+                            <path d="M48 118 C70 128 130 128 152 118 C158 128 152 142 146 140 C125 147 75 147 54 140 C48 142 42 128 48 118 Z" fill="#FFB800" stroke="#D4A000" stroke-width="1"/>
+                            <path d="M50 120 C72 130 128 130 150 120 C154 126 150 138 145 136 C126 143 74 143 55 136 C50 138 46 126 50 120 Z" fill="#FFD700"/>
+
+                            <!-- Ribbon Text "KABUPATEN CIREBON" -->
+                            <path id="ribbonArcPath" d="M 52 131 C 80 141 120 141 148 131" fill="none" stroke="none"/>
+                            <text font-family="Arial, sans-serif" font-weight="900" font-size="8.5" fill="#000000">
+                                <textPath href="#ribbonArcPath" startOffset="50%" text-anchor="middle">
+                                    KABUPATEN CIREBON
+                                </textPath>
+                            </text>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="inline-block px-3 py-1 bg-brand-gold/20 border border-brand-gold/40 rounded-full text-xs font-semibold text-brand-yellow uppercase tracking-wider mb-1">
+                            Yayasan Islamic Centre Kabupaten Cirebon
+                        </div>
+                        <h1 class="text-2xl sm:text-3xl font-extrabold font-heading text-white tracking-tight leading-snug">
+                            SMK ISLAMIC CENTRE CIREBON
+                        </h1>
+                        <p class="text-xs sm:text-sm text-blue-100 font-medium italic mt-1">
+                            "Islami, Kompeten, Berkarakter, Berdaya Saing"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tag Gelombang & Date Badge -->
+                <div class="bg-white/10 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/20 text-center md:text-right shrink-0">
+                    <span class="inline-block px-3 py-0.5 bg-brand-gold text-brand-navy font-extrabold text-xs rounded-full uppercase mb-1">
+                        GELOMBANG 2
+                    </span>
+                    <div class="text-sm font-bold text-white">Kamis, 5 November 2026</div>
+                    <div class="text-xs text-brand-yellow font-semibold">Hari Ke-4 (Hari Terakhir)</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN HERO CONTENT: THANK YOU MESSAGE -->
+        <main class="glass-card rounded-3xl p-6 sm:p-10 shadow-xl border border-white text-center relative overflow-hidden gold-glow">
+            <!-- Floating Trophy / Ribbon Icon -->
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-tr from-brand-gold to-yellow-200 text-brand-navy shadow-lg mb-6 transform hover:scale-105 transition-transform duration-300">
+                <i class="fa-solid fa-trophy text-4xl"></i>
+            </div>
+
+            <h2 class="text-2xl sm:text-4xl font-extrabold font-heading text-brand-navy mb-3 leading-tight">
+                Alhamdulillah! TKA Gelombang 2 Resmi Selesai! 🎉
+            </h2>
+            
+            <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-8 font-medium leading-relaxed">
+                Selamat dan apresiasi setinggi-tingginya untuk seluruh siswa-siswi kelas XII <span class="text-brand-blue font-bold">SMK Islamic Centre Cirebon</span> yang telah berjuang keras dan disiplin selama 4 hari pelaksanaan <span class="font-bold text-brand-navy">Tes Kemampuan Akademik (TKA) 2026</span>.
+            </p>
+
+            <!-- Quick Interactive Trigger Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-4">
+                <button onclick="triggerConfetti Celebration()" class="btn-3d-gold text-brand-navy font-extrabold px-8 py-4 rounded-2xl text-base sm:text-lg flex items-center gap-3 cursor-pointer">
+                    <i class="fa-solid fa-party-horn text-xl"></i>
+                    <span>Rayakan Kelancaran TKA! 🎉</span>
+                </button>
+                
+                <a href="#canvasSection" class="btn-3d-blue text-white font-extrabold px-6 py-4 rounded-2xl text-base sm:text-lg flex items-center gap-3 cursor-pointer">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <span>Tulis Kesan & Tanda Tangan</span>
+                </a>
+            </div>
+        </main>
+
+        <!-- RINGKASAN JADWAL TKA 4 HARI -->
+        <section class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-slate-200">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center font-bold">
+                    <i class="fa-solid fa-calendar-check text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-brand-navy font-heading">Rekapitulasi Ujian TKA Gelombang 2</h3>
+                    <p class="text-xs text-slate-500">Perjalanan usaha dan perjuangan belajar siswa 2 - 5 November 2026</p>
+                </div>
+            </div>
+
+            <!-- Grid 4 Hari -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- Hari 1 -->
+                <div class="rounded-2xl p-4 bg-slate-50 border border-slate-200 hover:border-brand-blue/40 transition-colors">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-extrabold text-brand-blue bg-blue-100 px-2.5 py-1 rounded-lg">Senin, 2 Nov</span>
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-brand-navy text-sm mb-2">Hari Pertama</h4>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                        <li>Bahasa Indonesia Wajib & Literasi Membaca</li>
+                        <li>Survei Karakter</li>
+                    </ul>
+                </div>
+
+                <!-- Hari 2 -->
+                <div class="rounded-2xl p-4 bg-slate-50 border border-slate-200 hover:border-brand-blue/40 transition-colors">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-extrabold text-brand-blue bg-blue-100 px-2.5 py-1 rounded-lg">Selasa, 3 Nov</span>
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-brand-navy text-sm mb-2">Hari Kedua</h4>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                        <li>Bahasa Inggris Wajib</li>
+                        <li>Survei Lingkungan Belajar</li>
+                    </ul>
+                </div>
+
+                <!-- Hari 3 -->
+                <div class="rounded-2xl p-4 bg-slate-50 border border-slate-200 hover:border-brand-blue/40 transition-colors">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-extrabold text-brand-blue bg-blue-100 px-2.5 py-1 rounded-lg">Rabu, 4 Nov</span>
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-brand-navy text-sm mb-2">Hari Ketiga</h4>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                        <li>Matematika Wajib & Numerasi</li>
+                    </ul>
+                </div>
+
+                <!-- Hari 4 (Hari Ini) -->
+                <div class="rounded-2xl p-4 bg-amber-50 border-2 border-brand-gold relative shadow-sm">
+                    <div class="absolute -top-2.5 right-3 bg-brand-gold text-brand-navy font-black text-[10px] px-2 py-0.5 rounded-full uppercase">
+                        Terakhir
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-extrabold text-amber-900 bg-amber-200/80 px-2.5 py-1 rounded-lg">Kamis, 5 Nov</span>
+                        <i class="fa-solid fa-flag-checkered text-brand-gold text-lg"></i>
+                    </div>
+                    <h4 class="font-bold text-brand-navy text-sm mb-2">Hari Keempat</h4>
+                    <ul class="text-xs text-slate-700 space-y-1.5 list-disc list-inside font-medium">
+                        <li>Mata Pelajaran Pilihan 1</li>
+                        <li>Mata Pelajaran Pilihan 2</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CANVASING PAD INTERAKTIF (TANDA TANGAN & KESAN PESAN) -->
+        <section id="canvasSection" class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-brand-blue font-bold text-xs uppercase tracking-wider mb-1">
+                        <i class="fa-solid fa-signature"></i> Papan Canvasing Digital
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy font-heading">Papan Kesan, Pesan & Tanda Tangan Siswa</h3>
+                    <p class="text-xs text-slate-500">Gunakan jarimu / mouse untuk membuat coretan ucapan atau tanda tangan di bawah ini!</p>
+                </div>
+
+                <!-- Color & Tool Picker Controls -->
+                <div class="flex flex-wrap items-center gap-2 bg-slate-100 p-2 rounded-2xl border border-slate-200">
+                    <!-- Color Buttons -->
+                    <button onclick="setBrushColor('#0052CC', this)" class="color-btn w-8 h-8 rounded-xl bg-[#0052CC] ring-2 ring-offset-1 ring-brand-blue transition-transform active:scale-95" title="Biru TKA"></button>
+                    <button onclick="setBrushColor('#FFB800', this)" class="color-btn w-8 h-8 rounded-xl bg-[#FFB800] transition-transform active:scale-95" title="Kuning Emas"></button>
+                    <button onclick="setBrushColor('#0A2540', this)" class="color-btn w-8 h-8 rounded-xl bg-[#0A2540] transition-transform active:scale-95" title="Hitam Navy"></button>
+                    <button onclick="setBrushColor('#EF4444', this)" class="color-btn w-8 h-8 rounded-xl bg-[#EF4444] transition-transform active:scale-95" title="Merah Semangat"></button>
+
+                    <div class="h-6 w-px bg-slate-300 mx-1"></div>
+
+                    <!-- Brush Size -->
+                    <select id="brushSize" onchange="changeBrushSize(this.value)" class="text-xs bg-white border border-slate-300 rounded-xl px-2 py-1.5 font-semibold text-slate-700 outline-none">
+                        <option value="3">Halus</option>
+                        <option value="6" selected>Sedang</option>
+                        <option value="12">Tebal</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Canvas Frame -->
+            <div class="relative w-full rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50/50 overflow-hidden shadow-inner min-h-[280px]">
+                <canvas id="interactiveCanvas" class="w-full h-[280px] block"></canvas>
+                
+                <!-- Watermark Text inside Canvas container -->
+                <div class="absolute bottom-3 right-4 pointer-events-none text-slate-400/50 font-bold text-xs select-none">
+                    SMK Islamic Centre Cirebon - TKA 2026
+                </div>
+            </div>
+
+            <!-- Action Buttons for Canvas -->
+            <div class="flex flex-wrap items-center justify-between gap-3 mt-4">
+                <button onclick="clearCanvas()" class="btn-3d-white text-slate-700 font-bold px-4 py-2.5 rounded-xl text-xs sm:text-sm flex items-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-eraser text-rose-500"></i>
+                    <span>Hapus Coretan</span>
+                </button>
+
+                <div class="flex items-center gap-2">
+                    <button onclick="downloadCanvas()" class="btn-3d-blue text-white font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Simpan Gambar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- DO'A, HARAPAN & SLOGAN SEKOLAH -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Card Doa -->
+            <div class="bg-gradient-to-br from-brand-navy to-brand-blue text-white rounded-3xl p-6 sm:p-8 shadow-lg relative overflow-hidden flex flex-col justify-between">
+                <div class="absolute -right-6 -top-6 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-brand-gold text-2xl mb-4">
+                        <i class="fa-solid fa-hands-praying"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-heading mb-2 text-white">Doa & Harapan Hasil Terbaik</h4>
+                    <p class="text-sm text-blue-100 leading-relaxed">
+                        "Semoga seluruh keringat, waktu, dan konsentrasi yang kalian curahkan dalam 4 hari ini dibalas dengan kelulusan sempurna, nilai memuaskan, serta menjadi batu loncatan menuju cita-cita mulia."
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-white/10 text-xs text-brand-yellow font-semibold">
+                    #TKA2026 #SMKIslamicCentreCirebon
+                </div>
+            </div>
+
+            <!-- Card Slogan -->
+            <div class="bg-gradient-to-br from-amber-500 to-brand-gold text-brand-navy rounded-3xl p-6 sm:p-8 shadow-lg relative overflow-hidden flex flex-col justify-between">
+                <div class="absolute -left-6 -bottom-6 w-32 h-32 bg-white/20 rounded-full blur-xl pointer-events-none"></div>
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-brand-navy/10 border border-brand-navy/20 flex items-center justify-center text-brand-navy text-2xl mb-4">
+                        <i class="fa-solid fa-plane-departure"></i>
+                    </div>
+                    <h4 class="text-xl font-black font-heading mb-1 text-brand-navy">Fly For The Future</h4>
+                    <p class="text-xs font-bold uppercase tracking-wider text-amber-900 mb-3">Terus Melangkah & Raih Prestasi</p>
+                    <p class="text-sm text-brand-navy/90 font-medium leading-relaxed">
+                        Ujian TKA hanyalah salah satu tahapan. Tetaplah menjadi pribadi yang Islami, Kompeten, Berkarakter, dan Berdaya Saing tinggi di masa depan!
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-brand-navy/10 text-xs font-extrabold text-brand-navy">
+                    SMK Islamic Centre Cirebon © 2026
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center text-xs text-slate-500 pt-4 pb-8 space-y-2">
+            <p class="font-medium">Dikembangkan untuk Apresiasi Pelaksanaan TKA Gelombang 2 • SMK Islamic Centre Cirebon</p>
+            <p class="text-slate-400">Kamis, 5 November 2026</p>
+        </footer>
+
+    </div>
+
+    <!-- AUDIO SYNTHESIZER (WEB AUDIO API) FOR CLICK SOUNDS -->
+    <script>
+        // Audio Context initialization on user interaction
+        let audioCtx = null;
+
+        function playClickSound(freq = 600, type = 'sine') {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.08);
+
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.08);
+            } catch (e) {
+                // Audio fallback if unsupported
+            }
+        }
+
+        // Add sound effect to all 3D buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.btn-3d-gold, .btn-3d-blue, .btn-3d-white');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => playClickSound(800, 'triangle'));
+            });
+        });
+
+        // Trigger Confetti Party Celebration Effect
+        function triggerConfettiCelebration() {
+            playClickSound(900, 'sine');
+            
+            // Confetti burst from multiple angles
+            const count = 200;
+            const defaults = {
+                origin: { y: 0.7 },
+                colors: ['#FFD700', '#0052CC', '#0088CC', '#FFFFFF']
+            };
+
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio)
+                }));
+            }
+
+            fire(0.25, {
+                spread: 26,
+                startVelocity: 55,
+            });
+            fire(0.2, {
+                spread: 60,
+            });
+            fire(0.35, {
+                spread: 100,
+                decay: 0.91,
+                scalar: 0.8
+            });
+            fire(0.1, {
+                spread: 120,
+                startVelocity: 25,
+                decay: 0.92,
+                scalar: 1.2
+            });
+            fire(0.1, {
+                spread: 120,
+                startVelocity: 45,
+            });
+        }
+
+        // Auto trigger small confetti burst on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                confetti({
+                    particleCount: 50,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#FFD700', '#0052CC', '#0088CC']
+                });
+            }, 500);
+        });
+    </script>
+
+    <!-- BACKGROUND FLOATING PARTICLES CANVAS -->
+    <script>
+        const bgCanvas = document.getElementById('bgParticleCanvas');
+        const bgCtx = bgCanvas.getContext('2d');
+        let particles = [];
+
+        function resizeBgCanvas() {
+            bgCanvas.width = window.innerWidth;
+            bgCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeBgCanvas);
+        resizeBgCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * bgCanvas.width;
+                this.y = bgCanvas.height + Math.random() * 20;
+                this.size = Math.random() * 4 + 2;
+                this.speedY = Math.random() * 1.2 + 0.4;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.color = Math.random() > 0.5 ? '#FFD700' : '#0088CC';
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                if (this.y < -10) this.reset();
+            }
+            draw() {
+                bgCtx.save();
+                bgCtx.globalAlpha = this.opacity;
+                bgCtx.fillStyle = this.color;
+                bgCtx.beginPath();
+                bgCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                bgCtx.fill();
+                bgCtx.restore();
+            }
+        }
+
+        for (let i = 0; i < 40; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateBgParticles() {
+            bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateBgParticles);
+        }
+        animateBgParticles();
+    </script>
+
+    <!-- INTERACTIVE DRAWING CANVAS LOGIC -->
+    <script>
+        const canvas = document.getElementById('interactiveCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let currentColor = '#0052CC';
+        let currentBrushSize = 6;
+
+        // Resize Canvas dynamically based on container
+        function setupInteractiveCanvas() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            // Save image data if any before resizing
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(canvas, 0, 0);
+
+            canvas.width = rect.width;
+            canvas.height = rect.height || 280;
+
+            // Fill canvas background with white
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Restore previous drawing
+            ctx.drawImage(tempCanvas, 0, 0);
+
+            // Canvas drawing defaults
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.strokeStyle = currentColor;
+            ctx.lineWidth = currentBrushSize;
+        }
+
+        window.addEventListener('resize', setupInteractiveCanvas);
+        setupInteractiveCanvas();
+
+        function getPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            let clientX = e.clientX;
+            let clientY = e.clientY;
+
+            if (e.touches && e.touches.length > 0) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            }
+
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const pos = getPos(e);
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            const pos = getPos(e);
+            ctx.strokeStyle = currentColor;
+            ctx.lineWidth = currentBrushSize;
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+        }
+
+        function stopDrawing() {
+            if (isDrawing) {
+                ctx.closePath();
+                isDrawing = false;
+            }
+        }
+
+        // Mouse Events
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseleave', stopDrawing);
+
+        // Touch Events for Mobile
+        canvas.addEventListener('touchstart', startDrawing);
+        canvas.addEventListener('touchmove', draw);
+        canvas.addEventListener('touchend', stopDrawing);
+
+        // Controls Logic
+        function setBrushColor(color, btnElem) {
+            currentColor = color;
+            playClickSound(700, 'sine');
+            
+            // Active Ring Indicator
+            document.querySelectorAll('.color-btn').forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-offset-1', 'ring-brand-blue');
+            });
+            if (btnElem) {
+                btnElem.classList.add('ring-2', 'ring-offset-1', 'ring-brand-blue');
+            }
+        }
+
+        function changeBrushSize(size) {
+            currentBrushSize = parseInt(size, 10);
+        }
+
+        function clearCanvas() {
+            playClickSound(400, 'sawtooth');
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function downloadCanvas() {
+            playClickSound(900, 'sine');
+            // Create temporary link to download PNG
+            const link = document.createElement('a');
+            link.download = 'Kesan-Pesan-TKA-SMK-Islamic-Centre.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>
